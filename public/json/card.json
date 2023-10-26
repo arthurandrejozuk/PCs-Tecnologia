@@ -1,0 +1,34 @@
+[
+    {
+        "id": "1",
+        "nome":"CPU",
+        "nomeComp":"Processador",
+        "imagem": "https://images.unsplash.com/photo-1613483187550-1458bbdb0996?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+        "descricao": "CPU (Central Processing Unit) também conhecido como processador é, por assim dizer, o cerebro do seu computador, faz os cálculos aritiméticos, logica e outras operações com dado do input, retornando o output.",
+        "endereco": "/componentes/1"
+    },
+    {
+        "id":"2",
+        "nome":"GPU",
+        "nomeComp":"Placa de Vídeo",
+        "imagem": "https://images.unsplash.com/photo-1621164071312-67bb68821b3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80",
+        "descricao": "GPU (Graphic Processing Unit) ou placa de video, é a unidade focada no processamento gráfico, ou seja focada em gerar vídeo, feito para substituir a CPU integrada e aumentar o poder de vídeo.",
+        "endereco": "/componentes/2"
+    },
+    {
+        "id": "3",
+        "nome":"Memória RAM",
+        "nomeComp":"Random Access Memory",
+        "imagem": "https://images.unsplash.com/photo-1611323209377-2ad4968815e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+        "descricao": "Memória RAM (random access memory) é um tipo de memória volátil que trabalha em conjunto com o CPU permitindo maior velocidade e quantidade de dados para o CPU trabalhar.",
+        "endereco": "/componentes/3"
+    },
+    {
+        "id": "4",
+        "nome":"Storage",
+        "nomeComp":"Armazenamento",
+        "imagem": "https://images.unsplash.com/photo-1661347334036-d484f970b1a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+        "descricao": "Seria os nossos HDs, que estão cada vez mais sendo substituidos pelos SSDs. Eles permitem guardar informarções mais pesadas e, mantê-las até o usuário decidir excluir.",
+        "endereco": "/componentes/4"
+    }
+]
