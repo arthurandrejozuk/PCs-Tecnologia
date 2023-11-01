@@ -84,12 +84,6 @@ const StyledDivDesc = styled.div`
         font-weight: 600;
         font-size: 18px;
     }
-    div{
-        display: flex;
-        text-align: center;
-        align-items: center;
-        gap: 8px;
-    }
     div:hover{
         cursor: auto;
         .nomeComp{
