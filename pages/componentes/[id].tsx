@@ -1,47 +1,67 @@
-import cards from '../../public/json/card.json';
-import Components from 'app/components/pagesPrototype/components';
-import Informacao from 'app/components/Informacao';
+import { createClient } from "@supabase/supabase-js";
+import Informacao from "app/components/Informacao";
+import Components from "app/components/pagesPrototype/components";
 
-export const getStaticPaths = (async () => {
-    const paths = cards.map(componente => {
-        return {params: {id:`${componente.id}`}}
-    })
-    return{
-        paths: paths,
-        fallback: false,
-    }
-})
 
-export async function getStaticProps(context) {
-    const id = context.params.id !== undefined ? context.params.id : null;
-    const componente = cards.find((atual) => {
-        if(atual.id === id){
-            return true
-        }
-        return false
-    })
-    return{
-        props:{
-            id: componente?.id,
-            name: componente?.nome,
-            image: componente?.imagem,
-            description: componente?.descricao,
-            adress: componente?.endereco
-        }
-    }
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_KEY = process.env.SUPABASE_KEY;
+const dbClient = createClient(SUPABASE_URL || "", SUPABASE_KEY || "");
+
+interface ComponentesProps{
+
+    data: Array<{id: number,
+        nome: string,
+        imagem: string,
+        descricao: string,
+        descricao_page: string,
+        endereco: string,
+        nomeComp?: string} 
+    >
 }
 
-export default function componente(props){
+export async function getStaticPaths() {
+    // Fetch the list of possible paths from your Supabase database or any other data source.
+    const { data, error } = await dbClient.from('components').select('id');
+    
+    if (error) {
+      console.error('Error fetching data from Supabase:', error);
+      return { paths: [], fallback: true };
+    }
+  
+    // Create an array of paths based on the data fetched.
+    const paths = data.map((item) => ({
+      params: { id: item.id.toString() },
+    }));
+  
+    return { paths, fallback: false };
+  }
+
+
+function Componente({ data }:ComponentesProps) {
     return(
-        <Components 
-        titulo={props.name}
-        children={
-            <Informacao 
-                imagem={props.image}
-                titulo={props.name} 
-                descricao={props.description}
-            />
-        }
-    />
+        <>
+                {data.map((item, index) => (
+                 <Components key={index} titulo={item.nome}>
+                    <Informacao titulo={item.nome} imagem={item.imagem} descricao={item.descricao_page}/>
+                 </Components>
+                ))}
+           
+        </>
     )
 }
+export default Componente;
+
+export async function getStaticProps(context) {
+    const { id } = context.params;
+   
+    const { data, error } = await dbClient
+      .from('components')
+      .select().eq('id', id).single(); 
+      console.log(data)
+    return {
+      props: {
+        id,
+        data: data ? [data] : [],
+      },
+    };
+  }

@@ -26,7 +26,7 @@ export default function Footer() {
     return(
         <StyledFooter>
             <Logo children={<h1>PCs</h1>}/>
-            <h3>Feito por <a>@arthurandrejozuk</a></h3>
+            <h3>&copy;{new Date().getFullYear()}  Feito por <a>@arthurandrejozuk</a></h3>
         </StyledFooter>
     )
 }

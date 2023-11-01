@@ -1,6 +1,18 @@
 import styled from 'styled-components';
-import catalogo from '../../../public/json/card.json';
 import TopButton from '../TopButton';
+import { useEffect, useState } from 'react';
+
+
+export type ComponentsProps = {
+    id: number;
+    nome: string;
+    imagem: string;
+    descricao: string;
+    descricaoPage?:string;
+    endereco: string;
+    nomeComp?: string;
+}
+
 
 const StyledDiv = styled.div`
 
@@ -94,44 +106,67 @@ const StyledDivDesc = styled.div`
         
     }
 `
-
 const StyledSection = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 `
+
+
+
 export default function Cards () {
+    const [data, setData] = useState<ComponentsProps[]>([])
+
+    useEffect(() => {
+
+        async function fetchData() {
+            try {
+                const response = await fetch('/api/tec/optin');
+                const responseData = await response.json()
+                setData(responseData.data);
+
+            } catch (error) {
+                console.error('Erro ao buscar dados da API:', error);
+            }
+            
+        }
+
+        fetchData();
+
+        }, [])
+
+      
     return(
         <>
         <StyledSection>
-            {catalogo.map(item => {
+            {data.map((item) => {
                 return(
                     <StyledDiv key={item.id}>
-                        <img src={item.imagem} alt={item.nome} />
-                        <StyledDivDesc>
-                            <div className='nome_desc'>
-                                <h1>
-                                    {item.nome} 
-                                </h1>
-                                <p className='nomeComp'>
-                                   - {item.nomeComp}
-                                </p>
-                            </div>
-                            <p>
-                                {item.descricao}
+                    <img src={item.imagem} alt={item.nome} />
+                    <StyledDivDesc>
+                        <div className='nome_desc'>
+                            <h1>
+                                {item.nome} 
+                            </h1>
+                            <p className='nomeComp'>
+                               - {item.nomeComp}
                             </p>
-                            <section>
-                                <button>
-                                    <a style={{textDecoration:"none"}} href={item.endereco}>
-                                        Ver mais 
-                                    </a>   
-                                </button>
-                            </section>
-                        </StyledDivDesc>
-                    </StyledDiv>
+                        </div>
+                        <p>
+                            {item.descricao}
+                        </p>
+                        <section>
+                            <button>
+                                <a style={{textDecoration:"none"}} href={item.endereco}>
+                                    Ver mais 
+                                </a>   
+                            </button>
+                        </section>
+                    </StyledDivDesc>
+                </StyledDiv>
                 )
-            })} 
+            })}
             <TopButton/>
         </StyledSection>
         </>
