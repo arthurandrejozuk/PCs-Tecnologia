@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import pecas from "../../../../public/json/card.json";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const StyledMenu = styled.div`
 
@@ -39,23 +40,35 @@ const StyledMenu = styled.div`
    
 `
 
-
  
 export default function MenuAtivo() {
-    return(
+
+
+    return (
         <StyledMenu>
             <h2>Menu</h2>
             <h1>Computador</h1>
             <ul>
-               {pecas.map((item) => {
-                return(
-                    <li>
-                        <a href={item.endereco}>
-                            {item.nome}
-                        </a>
-                    </li>
-                )
-               })}
+                <li>
+                    <Link href='/componentes/1/'>
+                        CPU
+                    </Link>
+                </li>
+                <li>
+                    <Link href='/componentes/2/'>
+                       GPU
+                    </Link>
+                </li>
+                <li>
+                    <Link href='/componentes/3/'>
+                        Memoria RAM
+                    </Link>
+                </li>
+                <li>
+                    <Link href='/componentes/4/'>
+                        Storage
+                    </Link>
+                </li>
             </ul>
         </StyledMenu>
     )

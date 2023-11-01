@@ -3,16 +3,16 @@ import styled from "styled-components";
 
 const StyledButton = styled.button`
 
-        margin-top:12px ;
+        margin-top:24px ;
         padding: 12px;
         max-width: 100px;
         justify-content: center;
         display: flex;
         align-items:center;
-        gap: 4px;
+        gap: 8px;
         background-color: #ffa600;
-        border-radius: 12px;
-        border: 1px solid;
+        border: 0;
+        border-bottom: 1px solid;
 `
 
 export default function VoltarButton(){

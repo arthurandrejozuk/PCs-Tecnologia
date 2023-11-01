@@ -26,10 +26,7 @@ const StyledHeader = styled.header`
         cursor: pointer;
     }
 
-
-
    
-
     `;
 
 const OpcoesPc = styled.a`
