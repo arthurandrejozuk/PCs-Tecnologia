@@ -5,8 +5,8 @@ import VoltarButton from '../VoltarButton';
 
 
 const StyledDiv = styled.div`
-    margin-right: 300px ;
-    margin-left: 300px ;
+    margin-right: 500px ;
+    margin-left: 500px ;
     
     
     h1{   

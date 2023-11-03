@@ -20,15 +20,17 @@ interface ComponentesProps{
 }
 
 export async function getStaticPaths() {
-    // Fetch the list of possible paths from your Supabase database or any other data source.
+    // pega os dados de componentes no banco de dados supabase
     const { data, error } = await dbClient.from('components').select('id');
-    
+    // confere se tem algum erro de ao chamar o banco
     if (error) {
       console.error('Error fetching data from Supabase:', error);
+      // retorna uma lista vazia do array caso não seja possivel
       return { paths: [], fallback: true };
     }
   
-    // Create an array of paths based on the data fetched.
+    // para cada dado do banco 'components', é criado um parametro, que dá uma pagina, ou um caminho
+    // para cada componente do banco 
     const paths = data.map((item) => ({
       params: { id: item.id.toString() },
     }));
@@ -38,6 +40,8 @@ export async function getStaticPaths() {
 
 
 function Componente({ data }:ComponentesProps) {
+  
+   
     return(
         <>
                 {data.map((item, index) => (
@@ -51,16 +55,19 @@ function Componente({ data }:ComponentesProps) {
 }
 export default Componente;
 
-export async function getStaticProps(context) {
+// ocorre em tempo de build 
+export async function getStaticProps(context: { params: { id: string } }) {
+    // pega o parametro da url
     const { id } = context.params;
-   
-    const { data, error } = await dbClient
+    
+    const { data } = await dbClient
       .from('components')
+      //usa o id pego pela url para selecionar o componente com id do parametro
       .select().eq('id', id).single(); 
-      console.log(data)
     return {
       props: {
         id,
+        //caso data exista, ele coloca data em um array.
         data: data ? [data] : [],
       },
     };
