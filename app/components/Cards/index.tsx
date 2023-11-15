@@ -35,7 +35,7 @@ const StyledDiv = styled.div`
     
     @media( max-width: 700px) {
         flex-wrap: wrap;
-        max-width: 400px;
+        width: 400px;
         padding-right:0;
         img{
             width: 100%;    
@@ -46,6 +46,9 @@ const StyledDiv = styled.div`
         p{
             padding: 0 12px 12px;
         }
+         @media(max-width: 700px){
+            width: 600px;
+         }
     }
    
 `
@@ -98,6 +101,21 @@ const StyledDivDesc = styled.div`
         color: rgb(38, 93, 245, 0);
         transition: 200ms;
         
+    }
+    @media(max-width: 700px){
+        h1{
+            font-size: 48px;
+        }
+        button{
+            font-size:24px;
+        }
+        .nomeComp{
+            color:  ${props => props.theme.fontColor};
+            opacity: 0.6;
+        }
+        p,.nomeComp{
+            font-size: 32px;
+        }
     }
 `
 const StyledSection = styled.section`

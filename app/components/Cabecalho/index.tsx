@@ -32,8 +32,8 @@ const StyledHeader = styled.header`
 const OpcoesPc = styled.a`
 
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: end;
+    align-items: end;
     gap: 12px;
     color: rgb(29, 145, 240) ;
     text-decoration: none;
@@ -51,7 +51,7 @@ const OpcoesPc = styled.a`
         font-size: 28px;
     }
     @media (max-width: 700px){
-       h2{
+       h1{
         display: none;
        }   
   
@@ -62,10 +62,11 @@ const StyledItems = styled.div`
     gap: 40px;
     display: flex;
     justify-content: center;
-    align-items: center;;
+    align-items: center;
     flex-wrap: wrap;
     color: #043d6b;
     text-align: center;
+    margin-bottom: 12px;
     a:hover{
         color: rgb(230, 245, 255);
         font-size: 36;
