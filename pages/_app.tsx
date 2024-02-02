@@ -54,7 +54,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <Head>
                 <title>PCs-Tecnologia</title>
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9721865588144455"
-     crossOrigin="anonymous"></script>
+                    crossOrigin="anonymous"></script>
                 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HDG4605RYY"></script>
                 <script 
                     dangerouslySetInnerHTML={{
