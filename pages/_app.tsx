@@ -49,6 +49,7 @@ export default function App({ Component, pageProps }: AppProps) {
        <>
             <Head>
                 <title>PCs-Tecnologia</title>
+                <meta name="google-adsense-account" content="ca-pub-9721865588144455"/>
                 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HDG4605RYY"></script>
                 <script 
                     dangerouslySetInnerHTML={{
