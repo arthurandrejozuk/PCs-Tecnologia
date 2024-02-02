@@ -11,14 +11,18 @@ import BotaoTheme from 'app/components/BotaoTheme';
 export default function App({ Component, pageProps }: AppProps) {
 
     const [theme, setTheme] = useState('light')
-
-    const themeToggle = () => {
-        theme === "light" ? setTheme("dark") : setTheme("light")
-    }
-
     const [isLoading, setIsLoading] = useState(true);
     const [carregado, setCarregado] = useState(false);
- 
+    const [active, setActive] = useState(true)
+
+    const themeToggle = () => {
+        theme === "light" ? setTheme("dark") : setTheme("light");
+        active === true ? setActive(false) : setActive(true);
+    }
+
+    
+
+
     useEffect(() => {
         const storedIsLoading = localStorage.getItem('isLoading');
     
@@ -66,7 +70,7 @@ export default function App({ Component, pageProps }: AppProps) {
                  
             </Head>
             <GlobalStyles/> 
-            <BotaoTheme onClick={() => {themeToggle()}}/>
+            <BotaoTheme boolean={active} onClick={() => {themeToggle()}}/>
             <Component {...pageProps} /> 
        </>
       )}
